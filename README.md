@@ -1,6 +1,6 @@
-# JeevanDhara — Hackathon MVP
+## JeevanDhara — Hackathon MVP
 
-Folders
+### Folders
 
 - backend: Node/Express REST API
 - mobile: Flutter app
@@ -8,34 +8,34 @@ Folders
 - infra: Docker, Firebase emulators and functions
 - docs: Additional docs
 
-Quickstart (Local)
+### Quickstart (Local)
 
-1) Backend
-- cd backend && cp .env.example .env
-- npm ci
-- Start MongoDB (local or via docker-compose)
-- npm run seed
-- npm run dev
+- Backend
+  - cd backend && cp .env.example .env
+  - npm install
+  - Start MongoDB (local or via docker-compose)
+  - npm run seed
+  - npm run dev
 
-2) ML microservice
-- cd ml
-- python3 -m venv .venv && source .venv/bin/activate
-- pip install -r requirements.txt
-- python generate_synthetic_data.py
-- python train_model.py
-- python predict_service.py
+- ML microservice
+  - cd ml
+  - python3 -m venv .venv && source .venv/bin/activate
+  - pip install -r requirements.txt
+  - python generate_synthetic_data.py
+  - python train_model.py
+  - python predict_service.py
 
-3) Firebase Emulator (optional)
-- cd infra/firebase
-- Install Firebase CLI and run: `firebase emulators:start --project demo-project`
+- Firebase Emulator (optional)
+  - cd infra/firebase
+  - Install Firebase CLI and run: `firebase emulators:start --project demo-project`
 
-4) Mobile app
-- cd mobile
-- flutter pub get
-- flutter run
-- Set backend base URL to emulator host: `10.0.2.2:4000`
+- Mobile app
+  - cd mobile
+  - flutter pub get
+  - flutter run
+  - Set backend base URL to emulator host: `10.0.2.2:4000`
 
-Demo Script
+### Demo Script
 
 - Register/login in app (or use Postman)
 - On Home, see heatmap around Hyderabad using seeded donors
@@ -43,18 +43,18 @@ Demo Script
 - ML: call /api/predict in Postman to see probability
 - Schedule a donation and see local notification
 
-Postman
+### Postman
 
 - Import `backend/src/postman/JeevanDhara.postman_collection.json`
 
-Docker
+### Docker
 
 - cd infra && docker-compose up --build
 
-CI
+### CI
 
 - Basic GitHub Actions workflow under `.github/workflows` will run backend tests
 
-Configs
+### Configs
 
 - Replace placeholders: Google Maps key `KEY_PLACEHOLDER`, Firebase `FIREBASE_PROJECT_ID`
