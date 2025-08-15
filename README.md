@@ -1,52 +1,60 @@
-# JeevanDhara
-# 🩸 JeevanDhara
+# JeevanDhara — Hackathon MVP
 
-**AI-powered, multilingual mobile platform bridging blood donors and Thalassaemia patients with real-time intelligence.**
+Folders
 
----
+- backend: Node/Express REST API
+- mobile: Flutter app
+- ml: Python ML pipeline + predict service
+- infra: Docker, Firebase emulators and functions
+- docs: Additional docs
 
-## 📌 Overview
-JeevanDhara tackles the scarcity and unpredictability of blood donors.  
-Unlike static databases, it predicts donor availability and suggests optimal mobile blood drive locations using AI + geospatial data.
+Quickstart (Local)
 
----
+1) Backend
+- cd backend && cp .env.example .env
+- npm ci
+- Start MongoDB (local or via docker-compose)
+- npm run seed
+- npm run dev
 
-## 🚀 Features
-- **AI Donor Prediction** – Based on donation history, demand, and engagement.
-- **Real-Time Heatmaps** – Identify high-need and high-donation zones.
-- **Multilingual UI** – Accessible to diverse Indian communities.
-- **Gamified Milestones** – Encourage repeat donations.
-- **Secure Data Handling** – Consent-based and GDPR-compliant.
+2) ML microservice
+- cd ml
+- python3 -m venv .venv && source .venv/bin/activate
+- pip install -r requirements.txt
+- python generate_synthetic_data.py
+- python train_model.py
+- python predict_service.py
 
----
+3) Firebase Emulator (optional)
+- cd infra/firebase
+- Install Firebase CLI and run: `firebase emulators:start --project demo-project`
 
-## 🛠 Tech Stack
-- **Frontend:** Flutter, Google Maps API  
-- **Backend:** Node.js, Express.js, MongoDB Atlas, Firebase  
-- **AI/ML:** Python, TensorFlow, Keras  
-- **Design & Tools:** Figma, Postman, GitHub
+4) Mobile app
+- cd mobile
+- flutter pub get
+- flutter run
+- Set backend base URL to emulator host: `10.0.2.2:4000`
 
----
+Demo Script
 
-## 🏆 Achievements
-- Built AI-powered donor prediction model.
-- Functional multilingual mobile app with real-time matching.
-- Simulated integration with e-RaktKosh & NGO networks.
+- Register/login in app (or use Postman)
+- On Home, see heatmap around Hyderabad using seeded donors
+- Create a blood request in Request form -> backend matches donors -> Firestore written
+- ML: call /api/predict in Postman to see probability
+- Schedule a donation and see local notification
 
----
+Postman
 
-## 🔮 Next Steps
-- Live integration with real blood bank APIs.
-- GPS-based dynamic van routing.
-- Aadhaar-based donor verification (with consent).
-- In-app doctor consultation & caregiver chatrooms.
+- Import `backend/src/postman/JeevanDhara.postman_collection.json`
 
----
+Docker
 
-## 👥 Creators
-- **Kristi Sikdar**  
-- **Vigyat Pandey**
+- cd infra && docker-compose up --build
 
----
+CI
 
+- Basic GitHub Actions workflow under `.github/workflows` will run backend tests
 
+Configs
+
+- Replace placeholders: Google Maps key `KEY_PLACEHOLDER`, Firebase `FIREBASE_PROJECT_ID`
