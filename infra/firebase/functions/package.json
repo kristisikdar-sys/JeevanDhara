@@ -1,0 +1,11 @@
+{
+  "name": "functions",
+  "scripts": {
+    "build": "echo noop",
+    "deploy": "echo demo"
+  },
+  "dependencies": {
+    "firebase-admin": "^12.5.0",
+    "firebase-functions": "^4.7.0"
+  }
+}

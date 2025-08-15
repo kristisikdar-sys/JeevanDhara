@@ -1,0 +1,30 @@
+version: '3.9'
+services:
+  mongo:
+    image: mongo:7
+    restart: unless-stopped
+    ports:
+      - "27017:27017"
+    volumes:
+      - mongo_data:/data/db
+  backend:
+    build:
+      context: ../backend
+    environment:
+      - MONGO_URI=mongodb://mongo:27017/jeevandhara
+      - JWT_SECRET=dev_secret
+      - REFRESH_TOKEN_SECRET=dev_refresh
+      - FIREBASE_PROJECT_ID=demo-project
+      - ML_PREDICT_URL=http://ml:5001/predict
+    ports:
+      - "4000:4000"
+    depends_on:
+      - mongo
+      - ml
+  ml:
+    build:
+      context: ../ml
+    ports:
+      - "5001:5001"
+volumes:
+  mongo_data:

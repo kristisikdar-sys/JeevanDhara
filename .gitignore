@@ -1,0 +1,44 @@
+# Node
+node_modules/
+**/node_modules/
+.npm-cache/
+
+# Python
+__pycache__/
+*.pyc
+
+# Flutter
+**/build/
+.dart_tool/
+.flutter-plugins
+.flutter-plugins-dependencies
+.packages
+.pub-cache/
+
+# Logs
+logs/
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# Env
+.env
+**/.env
+*.env.local
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Coverage
+coverage/
+**/coverage/
+
+# Firebase
+.firebase/
+.firebaserc.local
+
+# Models
+**/ml/models/
+**/*.h5
