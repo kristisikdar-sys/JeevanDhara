@@ -8,6 +8,12 @@ app.use(cors());
 app.use(express.json());
 app.use(morgan('dev'));
 
+// Root route (fixes "Cannot GET /")
+app.get('/', (req, res) => {
+  res.send('Welcome to JeevanDhara API 🚀');
+});
+
+// Health route
 app.get('/health', (req, res) => {
   res.json({ status: 'API running' });
 });
