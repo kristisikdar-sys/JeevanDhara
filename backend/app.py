@@ -71,7 +71,9 @@ def get_data() -> List[Dict[str, Any]]:
         raise HTTPException(status_code=500, detail="Error reading dataset")
 
 
+@app.get("/analyze")
 @app.post("/analyze")
+
 def analyze() -> Any:
     """Load ml/model.py and call analyze_data()."""
     project_root = _project_root_dir()
